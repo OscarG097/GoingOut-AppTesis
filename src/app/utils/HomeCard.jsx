@@ -19,7 +19,7 @@ function HomeCard({ body, path, label }) {
     )
 }
 
-export default HomeCard
+export { HomeCard }
 
 HomeCard.propTypes = {
     label: PropTypes.string.isRequired,

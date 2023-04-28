@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 // import { Helmet } from "react-helmet";
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -6,8 +5,8 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { Badge, Box, CircularProgress, Grid } from "@mui/material";
 import { PieChart, Pie } from "recharts";
-import { HomeStyles } from '../app/utils/HomeCardStyles';
-import HomeCard from '../app/utils/HomeCard';
+import { HomeStyles, HomeCard } from '../app/utils';
+// import HomeCard from '../app/utils/HomeCard';
 import { dataTables } from '../../data';
 import { useGetDataTables } from '../hooks/useGetDataTables';
 
@@ -77,9 +76,7 @@ function Home() {
                 className={classes.homeGrid}
                 spacing={2}
                 direction={'row'}
-                //
                 justifyContent={'center'}
-                //
                 alignItems={'center'}
             >
 
@@ -98,4 +95,4 @@ function Home() {
         </>
     )
 }
-export default Home;
+export { Home }

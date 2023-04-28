@@ -1,4 +1,4 @@
 export * from './CustomCircularProgress';
-export * from './CustomMUIComponent';
+export * from './CustomMUIComponents';
 export * from './HomeCard';
 export * from './HomeCardStyles';

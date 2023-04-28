@@ -1,31 +1,39 @@
-import { createRef, useEffect, useRef, useState } from "react";
-// import { Helmet } from 'react-helmet';
-import { Button, Stack } from "@mui/material";
-import { TablesPlaceStyles } from "./TablesPlaceStyles";
-import { dataTableInfo } from "../../../data";
-import { useGetDataTables } from "../../hooks/useGetDataTables";
+import {
+    // createRef,
+    useEffect,
+    // useRef,
+    useState
+} from "react";
+import { Button } from "@mui/material";
+import { TablesPlaceStyles } from "../app/tables-place/TablesPlaceStyles";
+import { dataTableInfo } from "../../data";
+import { useGetDataTables } from "../hooks/useGetDataTables";
+import CustomCircularProgress from "../app/utils/CustomCircularProgress";
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import CustomCircularProgress from "../utils/CustomCircularProgress";
 import EditIcon from '@mui/icons-material/Edit';
-import Table from "./Table";
-import CustomDialog from "./Dialog";
+import Table from "../app/tables-place/Table";
+import CustomDialog from "../app/tables-place/Dialog";
 
-function TablesPlace() {
+export function TablesPlace() {
     const [newName, setNewName] = useState('')
     const [move, setMove] = useState(false)
     const [tableName, setTableName] = useState('')
-    // const [tables, setTables] = useState([])
+    const [tables, setTables] = useState([])
     const [openDialog, setOpenDialog] = useState(false)
     const classes = TablesPlaceStyles()
     const { loading, data } = useGetDataTables(dataTableInfo)
-    const boxRef = useRef(data.map(() => createRef()))
+    // const boxRef = useRef(data.map(() => createRef()))
 
 
-    // const onAddButton = () => {
-    //     let newTable = { left: 0, top: 0, tableName: data.length + 1, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 }
-    //     setTables(value => [...value, newTable])
-    // }
+    useEffect(() => {
+        setTables(dataTableInfo)
+    }, [])
+
+    const onAddButton = () => {
+        let newTable = { left: 0, top: 0, tableName: data.length + 1, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 }
+        setTables(value => [...value, newTable])
+    }
 
     const handleCloseDialog = () => {
         setOpenDialog(false)
@@ -33,13 +41,13 @@ function TablesPlace() {
 
     const saveName = () => {
         console.log('Nuevo nombre -->', newName)
-        // const updateTable = data.map(table => {
-        //     if (table.tableName === tableName) {
-        //         return { ...table, name: newName, available: false };
-        //     }
-        //     return table;
-        // });
-        // setTables(updateTable)
+        const updateTable = data.map(table => {
+            if (table.tableName === tableName) {
+                return { ...table, name: newName, available: false };
+            }
+            return table;
+        });
+        setTables(updateTable)
         setOpenDialog(false)
     }
 
@@ -84,32 +92,30 @@ function TablesPlace() {
                         }}
                         className={classes.editButton}
                         startIcon={<ControlPointIcon />}
-                    // onClick={() => onAddButton()}
+                        onClick={() => onAddButton()}
                     > Agregar mesa
                     </Button>
                 }
 
                 {/* <Stack direction={'row'} spacing={3}> */}
                 {/* <div reg={drop} style={{ width: '100%', height: '100%' }}> */}
-                <Stack direction={'row'} spacing={3}>
-                    {dataTableInfo.map((table, index) => (
-                        <Table
-                            ref={boxRef.current[index]}
-                            x={table.top}
-                            y={table.left}
-                            key={table.tableName}
-                            openDialog={setOpenDialog}
-                            getTableName={setTableName}
-                            waiter={table.waiter}
-                            amount={table.amount}
-                            name={table.name}
-                            available={table.available}
-                            tableName={table.tableName}
-                        // move={move}
-                        />
+                {tables.map((table) => (
+                    <Table
+                        amount={table.amount}
+                        available={table.available}
+                        getTableName={setTableName}
+                        key={table.tableName}
+                        move={move}
+                        name={table.name}
+                        openDialog={setOpenDialog}
+                        // ref={boxRef.current[index]}
+                        tableName={table.tableName}
+                        waiter={table.waiter}
+                        x={table.top}
+                        y={table.left}
+                    />
 
-                    ))}
-                </Stack>
+                ))}
                 {/* </div> */}
                 {/* </Stack> */}
 
@@ -123,5 +129,3 @@ function TablesPlace() {
     )
 
 }
-
-export { TablesPlace }
