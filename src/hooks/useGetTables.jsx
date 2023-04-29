@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-// import axios from "axios";
-
 
 export const useGetTables = (url) => {
 
@@ -13,7 +11,6 @@ export const useGetTables = (url) => {
 
     const getData = async () => {
         try {
-            // const { data } = await axios.get(url)
             setLoading(true)
             let availableTable = 0
             let occupiedTable = 0

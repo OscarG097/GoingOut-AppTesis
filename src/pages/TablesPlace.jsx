@@ -23,7 +23,6 @@ export function TablesPlace() {
     const [openDialog, setOpenDialog] = useState(false)
     const classes = TablesPlaceStyles()
     const { loading, data } = useGetDataTables(dataTableInfo)
-    // const boxRef = useRef(data.map(() => createRef()))
 
 
     useEffect(() => {
@@ -54,15 +53,9 @@ export function TablesPlace() {
     return (
         loading ?
             <>
-                {/* <Helmet>
-                    <title>Cargando... Going Out Management </title>
-                </Helmet> */}
                 < CustomCircularProgress style={classes.circularProgressBox} />
             </>
             :
-            // <Helmet>
-            //     <title>Going Out Management | Mesas</title>
-            // </Helmet>
 
             <div style={{ marginTop: '3%' }}>
 
@@ -97,8 +90,6 @@ export function TablesPlace() {
                     </Button>
                 }
 
-                {/* <Stack direction={'row'} spacing={3}> */}
-                {/* <div reg={drop} style={{ width: '100%', height: '100%' }}> */}
                 {tables.map((table) => (
                     <Table
                         amount={table.amount}
@@ -108,7 +99,6 @@ export function TablesPlace() {
                         move={move}
                         name={table.name}
                         openDialog={setOpenDialog}
-                        // ref={boxRef.current[index]}
                         tableName={table.tableName}
                         waiter={table.waiter}
                         x={table.top}
@@ -116,8 +106,6 @@ export function TablesPlace() {
                     />
 
                 ))}
-                {/* </div> */}
-                {/* </Stack> */}
 
                 <CustomDialog
                     open={openDialog}

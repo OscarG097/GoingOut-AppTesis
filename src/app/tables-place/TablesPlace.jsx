@@ -1,5 +1,4 @@
-import { createRef, useEffect, useRef, useState } from "react";
-// import { Helmet } from 'react-helmet';
+import { createRef, useRef, useState } from "react";
 import { Button, Stack } from "@mui/material";
 import { TablesPlaceStyles } from "./TablesPlaceStyles";
 import { dataTableInfo } from "../../../data";
@@ -15,17 +14,11 @@ function TablesPlace() {
     const [newName, setNewName] = useState('')
     const [move, setMove] = useState(false)
     const [tableName, setTableName] = useState('')
-    // const [tables, setTables] = useState([])
     const [openDialog, setOpenDialog] = useState(false)
     const classes = TablesPlaceStyles()
     const { loading, data } = useGetDataTables(dataTableInfo)
     const boxRef = useRef(data.map(() => createRef()))
 
-
-    // const onAddButton = () => {
-    //     let newTable = { left: 0, top: 0, tableName: data.length + 1, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 }
-    //     setTables(value => [...value, newTable])
-    // }
 
     const handleCloseDialog = () => {
         setOpenDialog(false)
@@ -33,29 +26,15 @@ function TablesPlace() {
 
     const saveName = () => {
         console.log('Nuevo nombre -->', newName)
-        // const updateTable = data.map(table => {
-        //     if (table.tableName === tableName) {
-        //         return { ...table, name: newName, available: false };
-        //     }
-        //     return table;
-        // });
-        // setTables(updateTable)
         setOpenDialog(false)
     }
 
     return (
         loading ?
             <>
-                {/* <Helmet>
-                    <title>Cargando... Going Out Management </title>
-                </Helmet> */}
                 < CustomCircularProgress style={classes.circularProgressBox} />
             </>
             :
-            // <Helmet>
-            //     <title>Going Out Management | Mesas</title>
-            // </Helmet>
-
             <div style={{ marginTop: '3%' }}>
 
                 <Button
@@ -84,13 +63,10 @@ function TablesPlace() {
                         }}
                         className={classes.editButton}
                         startIcon={<ControlPointIcon />}
-                    // onClick={() => onAddButton()}
                     > Agregar mesa
                     </Button>
                 }
 
-                {/* <Stack direction={'row'} spacing={3}> */}
-                {/* <div reg={drop} style={{ width: '100%', height: '100%' }}> */}
                 <Stack direction={'row'} spacing={3}>
                     {dataTableInfo.map((table, index) => (
                         <Table
@@ -105,13 +81,10 @@ function TablesPlace() {
                             name={table.name}
                             available={table.available}
                             tableName={table.tableName}
-                        // move={move}
                         />
 
                     ))}
                 </Stack>
-                {/* </div> */}
-                {/* </Stack> */}
 
                 <CustomDialog
                     open={openDialog}

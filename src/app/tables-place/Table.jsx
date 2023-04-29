@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, Divider, ListItem, Menu, MenuItem, Stack, Typography } from "@mui/material";
 import PropTypes from 'prop-types';
 
-function Table(props) {
+const Table = (props) => {
 
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl)
@@ -19,8 +19,6 @@ function Table(props) {
         waiter,
         x,
         y,
-        // box,
-        // onBoxMove
     } = props
 
     const handleClick = (e) => {
@@ -43,14 +41,11 @@ function Table(props) {
                 tableName={tableName}
                 display={'flex'}
                 padding={2}
-                // top={x}
-                // left={y}
                 sx={{
                     position: '',
                     top: { x },
                     left: { y },
                     margin: '1px 1px 20px 1px',
-                    // zIndex: 'tooltip',
                     width: 70,
                     height: 50,
                     backgroundColor: available === null ? `${'success.main'}` : (available ? `${'success.main'}` : `${'error.main'}`),
