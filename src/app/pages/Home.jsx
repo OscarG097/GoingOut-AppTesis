@@ -6,10 +6,10 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { Badge, Box, CircularProgress, Grid } from "@mui/material";
 import { PieChart, Pie } from "recharts";
-import { HomeStyles } from '../app/utils/HomeCardStyles';
-import HomeCard from '../app/utils/HomeCard';
-import { dataTables } from '../../data';
-import { useGetDataTables } from '../hooks/useGetDataTables';
+import { HomeStyles } from '../utils/HomeCardStyles';
+import HomeCard from '../utils/HomeCard';
+import { dataTables } from '../../../data';
+import { useGetDataTables } from '../../hooks/useGetDataTables';
 
 function Home() {
     const [count, setCount] = useState(0)
