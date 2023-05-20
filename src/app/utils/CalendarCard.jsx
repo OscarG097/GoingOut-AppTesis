@@ -4,17 +4,16 @@ import { ServerDay } from './ServerDay';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar, DayCalendarSkeleton, LocalizationProvider } from '@mui/x-date-pickers/';
 import dayjs from 'dayjs';
+import 'dayjs/locale/es-mx'
 
 function CalendarCard() {
     const requestAbortController = useRef(null)
     const [isLoading, setIsLoading] = useState(false)
-    const [highlightedDays, setHighlightedDays] = useState([1, 2, 15])
+    const [highlightedDays, setHighlightedDays] = useState([1, 5, 10, 23, 29])
 
     const initialValue = dayjs();
 
-    // const getRandomNumber = (min, max) => {
-    //     return Math.round(Math.random() * (max - min) + min);
-    // }
+    //USE EFFECT PARA HACER GET DE LOS highlightedDays
 
     const fetch = (date, { signal }) => {
         return new Promise((resolve, reject) => {
@@ -55,22 +54,22 @@ function CalendarCard() {
         return () => requestAbortController.current?.abort()
     })
 
-    const handleMonthChange = (date) => {
-        if (requestAbortController.current) {
+    // const handleMonthChange = (date) => {
+    //     if (requestAbortController.current) {
 
-            requestAbortController.current.abort();
-        }
-        setIsLoading(true);
-        setHighlightedDays([]);
-        fetchHighlightedDays(date);
-    }
+    //         requestAbortController.current.abort();
+    //     }
+    //     setIsLoading(true);
+    //     setHighlightedDays([]);
+    //     fetchHighlightedDays(date);
+    // }
 
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'es-mx'}>
             <DateCalendar
                 defaultValue={initialValue}
                 loading={isLoading}
-                onMonthChange={handleMonthChange}
+                // onMonthChange={handleMonthChange}
                 renderLoading={() => <DayCalendarSkeleton />}
                 slots={{
                     day: ServerDay,

@@ -56,9 +56,7 @@ export function TablesPlace() {
                 < CustomCircularProgress style={classes.circularProgressBox} />
             </>
             :
-
-            <div style={{ marginTop: '3%' }}>
-
+            <>
                 <Button
                     sx={{
                         position: 'absolute',
@@ -92,10 +90,10 @@ export function TablesPlace() {
 
                 {tables.map((table) => (
                     <Table
+                        key={table.tableName}
                         amount={table.amount}
                         available={table.available}
                         getTableName={setTableName}
-                        key={table.tableName}
                         move={move}
                         name={table.name}
                         openDialog={setOpenDialog}
@@ -104,7 +102,6 @@ export function TablesPlace() {
                         x={table.top}
                         y={table.left}
                     />
-
                 ))}
 
                 <CustomDialog
@@ -113,7 +110,8 @@ export function TablesPlace() {
                     save={saveName}
                     newName={setNewName}
                 />
-            </div>
+
+            </>
     )
 
 }

@@ -35,17 +35,20 @@ const Table = (props) => {
     }
 
     return (
-        <>
+        <div
+            style={{
+                position: 'relative'
+            }}
+        >
             <Box
                 ref={ref}
                 tableName={tableName}
                 display={'flex'}
                 padding={2}
                 sx={{
-                    position: '',
-                    top: { x },
-                    left: { y },
-                    margin: '1px 1px 20px 1px',
+                    position: 'absolute',
+                    top: `${x}px`,
+                    left: `${y}px`,
                     width: 70,
                     height: 50,
                     backgroundColor: available === null ? `${'success.main'}` : (available ? `${'success.main'}` : `${'error.main'}`),
@@ -53,7 +56,8 @@ const Table = (props) => {
                         opacity: [0.9, 0.8, 0.7],
                     },
                 }}
-                onClick={handleClick}
+                onClick={open ? handleClose : handleClick}
+
                 size='small'
             >
                 <Stack spacing={2} direction={'column'}>
@@ -113,7 +117,7 @@ const Table = (props) => {
                     }
                 </Stack>
             </Box>
-        </>
+        </div>
     )
 
 }
