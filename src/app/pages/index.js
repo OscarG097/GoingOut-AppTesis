@@ -1,1 +1,2 @@
-export * from './Home.jsx';
+export * from './Home';
+export * from './TablesPlace';

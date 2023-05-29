@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import axios from "axios";
 
 
 export const useGetDataTables = (url) => {
@@ -13,7 +12,6 @@ export const useGetDataTables = (url) => {
 
     const getData = async () => {
         try {
-            // const { data } = await axios.get(url)
             setLoading(true)
             setData(url)
             console.log(url)

@@ -1,6 +1,6 @@
 import { makeStyles } from "@mui/styles";
 
-const HomeStyles = makeStyles({
+const HomeCardStyles = makeStyles({
     homeCardClass: {
         alignSelf: 'center',
         height: '295px',
@@ -26,4 +26,4 @@ const HomeStyles = makeStyles({
 
 })
 
-export { HomeStyles }
+export { HomeCardStyles }

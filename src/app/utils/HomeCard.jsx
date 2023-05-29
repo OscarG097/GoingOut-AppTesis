@@ -1,11 +1,11 @@
-
-import { Link } from "react-router-dom";
-import { Card, Grid, Typography } from "@mui/material";
-import { HomeStyles } from "./HomeCardStyles";
+import { Link } from 'react-router-dom';
+import { Card, Grid, Typography } from '@mui/material';
+import { HomeCardStyles } from "./styles";
 import PropTypes from 'prop-types';
 
-function HomeCard({ body, path, label }) {
-    const classes = HomeStyles();
+const HomeCard = (props) => {
+    const classes = HomeCardStyles();
+    const { body, path, label } = props
 
     return (
         <Grid item lg={6} sm={3} xs={12}>
@@ -19,10 +19,10 @@ function HomeCard({ body, path, label }) {
     )
 }
 
-export default HomeCard
+export { HomeCard }
 
 HomeCard.propTypes = {
     label: PropTypes.string.isRequired,
     body: PropTypes.any.isRequired,
-    path: PropTypes.string.isRequired
+    path: PropTypes.string
 }

@@ -2,33 +2,31 @@ import { useState } from "react";
 import { Box, Divider, ListItem, Menu, MenuItem, Stack, Typography } from "@mui/material";
 import PropTypes from 'prop-types';
 
-function Table(props) {
+const Table = (props) => {
 
-    const [anchor, setAnchor] = useState(null)
-    const openMenu = Boolean(setAnchor)
+    const [anchorEl, setAnchorEl] = useState(null)
+    const open = Boolean(anchorEl)
 
     const {
         amount,
         available,
-        name,
-        openDialog,
-        tableName,
-        waiter,
         getTableName,
         move,
+        name,
+        openDialog,
+        ref,
+        tableName,
+        waiter,
         x,
         y,
-        ref,
-        // box,
-        // onBoxMove
     } = props
 
     const handleClick = (e) => {
-        setAnchor(e.currentTarget)
+        setAnchorEl(e.currentTarget)
     }
 
     const handleClose = () => {
-        setAnchor(null)
+        setAnchorEl(null)
     }
 
     const handleDialog = () => {
@@ -37,20 +35,20 @@ function Table(props) {
     }
 
     return (
-        <>
+        <div
+            style={{
+                position: 'relative'
+            }}
+        >
             <Box
                 ref={ref}
                 tableName={tableName}
                 display={'flex'}
                 padding={2}
-                // top={x}
-                // left={y}
                 sx={{
-                    position: '',
-                    top: { x },
-                    left: { y },
-                    margin: '1px 1px 20px 1px',
-                    // zIndex: 'tooltip',
+                    position: 'absolute',
+                    top: `${x}px`,
+                    left: `${y}px`,
                     width: 70,
                     height: 50,
                     backgroundColor: available === null ? `${'success.main'}` : (available ? `${'success.main'}` : `${'error.main'}`),
@@ -58,23 +56,25 @@ function Table(props) {
                         opacity: [0.9, 0.8, 0.7],
                     },
                 }}
-                onClick={handleClick}
+                onClick={open ? handleClose : handleClick}
+
                 size='small'
             >
                 <Stack spacing={2} direction={'column'}>
-                    <Typography>
-                        {tableName}
-                    </Typography>
+                    <Stack direction={'column'}>
+                        <Typography>
+                            {tableName}
+                        </Typography>
 
-                    <Typography>x:{x}</Typography>
-                    <Typography>y:{y}</Typography>
+                        <Typography>y:{y} x:{x}</Typography>
+                    </Stack>
 
                     {!move &&
                         <Menu
-                            open={openMenu}
-                            anchorEl={anchor}
+                            open={open}
+                            anchorEl={anchorEl}
                             onClose={handleClose}
-                            onClick={handleClose}
+                            onClick={handleClick}
                             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                             PaperProps={{
@@ -117,7 +117,7 @@ function Table(props) {
                     }
                 </Stack>
             </Box>
-        </>
+        </div>
     )
 
 }
@@ -129,7 +129,7 @@ Table.propTypes = {
     available: PropTypes.bool.isRequired,
     name: PropTypes.string,
     openDialog: PropTypes.any,
-    tableName: PropTypes.string.isRequired,
+    tableName: PropTypes.number.isRequired,
     waiter: PropTypes.string,
     getTableName: PropTypes.any,
     move: PropTypes.any,

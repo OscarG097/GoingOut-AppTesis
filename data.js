@@ -24,19 +24,19 @@ export const dataTables = [
 ]
 
 export const dataTableInfo = [
-    { left: '131', top: '89', tableName: 1, widht: 70, height: 50, available: false, name: 'Lucas Basualdo', waiter: 'Luciano Labudia', amount: 4400.00 },
-    { left: '131', top: '183', tableName: 2, widht: 70, height: 50, available: true, name: null, waiter: null, amount: null },
-    { left: '131', top: '277', tableName: 3, widht: 70, height: 50, available: false, name: 'Leonel Ochoa', waiter: null, amount: 0 },
-    { left: '131', top: '371', tableName: 4, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 },
-    { left: '131', top: '465', tableName: 5, widht: 70, height: 50, available: false, name: 'Pablo Rutigliano', waiter: 'Luciano Labudia', amount: 800.00 },
-    { left: '131', top: '559', tableName: 6, widht: 70, height: 50, available: false, name: 'Aldana Romero', waiter: null, amount: 840.00 },
-    { left: '131', top: '653', tableName: 7, widht: 70, height: 50, available: false, name: 'Rocio Maglio', waiter: 'Pilar Freiberg', amount: 420.00 },
-    { left: '131', top: '747', tableName: 8, widht: 70, height: 50, available: false, name: 'Oscar Gimenez', waiter: null, amount: 1340.00 },
-    { left: '131', top: '841', tableName: 9, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 },
-    { left: '131', top: '935', tableName: 10, widht: 70, height: 50, available: false, name: 'Matias Chamorro', waiter: null, amount: 0 },
-    { left: '131', top: '1029', tableName: 11, widht: 70, height: 50, available: false, name: 'Pamela Prieto', waiter: 'Pilar Freiberg', amount: 1260.00 },
-    { left: '131', top: '1123', tableName: 12, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 },
-    { left: '131', top: '1217', tableName: 13, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 },
+    { left: '89', top: '131', tableName: 1, widht: 70, height: 50, available: false, name: 'Lucas Basualdo', waiter: 'Luciano Labudia', amount: 4400.00 },
+    { left: '200', top: '131', tableName: 2, widht: 70, height: 50, available: true, name: null, waiter: null, amount: null },
+    { left: '310', top: '131', tableName: 3, widht: 70, height: 50, available: false, name: 'Leonel Ochoa', waiter: null, amount: 0 },
+    { left: '420', top: '131', tableName: 4, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 },
+    { left: '530', top: '131', tableName: 5, widht: 70, height: 50, available: false, name: 'Pablo Rutigliano', waiter: 'Luciano Labudia', amount: 800.00 },
+    { left: '640', top: '131', tableName: 6, widht: 70, height: 50, available: false, name: 'Aldana Romero', waiter: null, amount: 840.00 },
+    { left: '750', top: '131', tableName: 7, widht: 70, height: 50, available: false, name: 'Rocio Maglio', waiter: 'Pilar Freiberg', amount: 420.00 },
+    { left: '860', top: '131', tableName: 8, widht: 70, height: 50, available: false, name: 'Oscar Gimenez', waiter: null, amount: 1340.00 },
+    { left: '970', top: '131', tableName: 9, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 },
+    { left: '1080', top: '131', tableName: 10, widht: 70, height: 50, available: false, name: 'Matias Chamorro', waiter: null, amount: 0 },
+    { left: '1', top: '230', tableName: 11, widht: 70, height: 50, available: false, name: 'Pamela Prieto', waiter: 'Pilar Freiberg', amount: 1260.00 },
+    { left: '110', top: '230', tableName: 12, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 },
+    { left: '220', top: '230', tableName: 13, widht: 70, height: 50, available: true, name: null, waiter: null, amount: 0 },
 ]
 
 export const listMenuOptions = [

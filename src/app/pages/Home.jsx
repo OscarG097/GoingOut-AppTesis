@@ -1,19 +1,16 @@
-/* eslint-disable no-unused-vars */
-import { useState } from 'react';
-// import { Helmet } from "react-helmet";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { Badge, Box, CircularProgress, Grid } from "@mui/material";
 import { PieChart, Pie } from "recharts";
-import { HomeStyles } from '../utils/HomeCardStyles';
-import HomeCard from '../utils/HomeCard';
-import { dataTables } from '../../../data';
-import { useGetDataTables } from '../../hooks/useGetDataTables';
+import { HomeCardStyles } from '../app/utils/styles'
+import { HomeCard, CalendarCard } from '../app/utils';
+import { dataTables } from '../../data';
+import { useGetDataTables } from '../hooks/useGetDataTables';
 
 function Home() {
-    const [count, setCount] = useState(0)
-    const classes = HomeStyles()
+    const count = 0
+    const classes = HomeCardStyles()
     const { tables, loading } = useGetDataTables(dataTables)
 
 
@@ -55,8 +52,8 @@ function Home() {
         {
             id: 2,
             label: 'Reservas',
-            path: import.meta.env.VITE_ROUTES_BOOKINGS,
-            body: <h1>Calendario</h1>
+            // path: import.meta.env.VITE_ROUTES_BOOKINGS,
+            body: <CalendarCard />
 
         },
         {
@@ -69,17 +66,12 @@ function Home() {
 
     return (
         <>
-            {/* <Helmet>
-                <title>GO Management | Home</title>
-            </Helmet> */}
             <Grid
                 container
                 className={classes.homeGrid}
                 spacing={2}
                 direction={'row'}
-                //
                 justifyContent={'center'}
-                //
                 alignItems={'center'}
             >
 
@@ -91,11 +83,8 @@ function Home() {
                         body={body}
                     />
                 ))}
-                {/* <button onClick={() => setCount(count + 1)}>
-                    Click!
-                </button> */}
             </Grid>
         </>
     )
 }
-export default Home;
+export { Home }
