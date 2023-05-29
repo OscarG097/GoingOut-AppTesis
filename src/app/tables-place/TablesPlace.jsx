@@ -1,5 +1,5 @@
 import { createRef, useRef, useState } from "react";
-import { Button, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 import { TablesPlaceStyles } from "./TablesPlaceStyles";
 import { dataTableInfo } from "../../../data";
 import { useGetDataTables } from "../../hooks/useGetDataTables";
@@ -13,7 +13,7 @@ import CustomDialog from "./Dialog";
 function TablesPlace() {
     const [newName, setNewName] = useState('')
     const [move, setMove] = useState(false)
-    const [tableName, setTableName] = useState('')
+    // const [tableName, setTableName] = useState('')
     const [openDialog, setOpenDialog] = useState(false)
     const classes = TablesPlaceStyles()
     const { loading, data } = useGetDataTables(dataTableInfo)
@@ -67,24 +67,26 @@ function TablesPlace() {
                     </Button>
                 }
 
-                <Stack direction={'row'} spacing={3}>
-                    {dataTableInfo.map((table, index) => (
-                        <Table
-                            ref={boxRef.current[index]}
-                            x={table.top}
-                            y={table.left}
-                            key={table.tableName}
-                            openDialog={setOpenDialog}
-                            getTableName={setTableName}
-                            waiter={table.waiter}
-                            amount={table.amount}
-                            name={table.name}
-                            available={table.available}
-                            tableName={table.tableName}
-                        />
+                {/* <Stack direction={'row'} spacing={3}> */}
+                {dataTableInfo.map((table, index) => (
+                    <Table
+                        ref={boxRef.current[index]}
+                        x={table.top}
+                        y={table.left}
+                        key={table.tableName}
+                        openDialog={setOpenDialog}
+                        // getTableName={setTableName}
+                        waiter={table.waiter}
+                        amount={table.amount}
+                        name={table.name}
+                        width={table.widht}
+                        height={table.height}
+                        available={table.available}
+                        tableName={table.tableName}
+                    />
 
-                    ))}
-                </Stack>
+                ))}
+                {/* </Stack> */}
 
                 <CustomDialog
                     open={openDialog}

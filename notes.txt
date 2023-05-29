@@ -1,0 +1,5 @@
+1- CalendarCard --> 
+    highlightedDays, como se recibe? se busca un array con las fechas marcadas para hacerlo directamente o se cuentan las fechas.
+
+2- RegisterPage --> 
+    Los input deberia ser un componente aparte

@@ -28,7 +28,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import MovingIcon from '@mui/icons-material/Moving';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { AppBar, Drawer, DrawerHeader } from "../utils";
-import GOING_OUT_LOGO from "./../../images/GoingOutNavbarLogo.png";
+import GOING_OUT_LOGO from './../images/GoingOutNavbarLogo.png';
 import { listMenuOptions, listReservationOptions, listBillingsOptions } from "../../../data";
 
 function GoLayout() {

@@ -3,9 +3,9 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { Badge, Box, CircularProgress, Grid } from "@mui/material";
 import { PieChart, Pie } from "recharts";
-import { HomeCardStyles } from '../app/utils/styles'
-import { HomeCard, CalendarCard } from '../app/utils';
-import { dataTables } from '../../data';
+import { HomeCardStyles } from '../utils/styles'
+import { HomeCard, CalendarCard } from '../utils';
+import { dataTables } from '../../../data';
 import { useGetDataTables } from '../hooks/useGetDataTables';
 
 function Home() {

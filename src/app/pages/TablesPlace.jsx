@@ -5,15 +5,15 @@ import {
     useState
 } from "react";
 import { Button } from "@mui/material";
-import { TablesPlaceStyles } from "../app/tables-place/TablesPlaceStyles";
-import { dataTableInfo } from "../../data";
+import { TablesPlaceStyles } from "../tables-place/TablesPlaceStyles";
+import { dataTableInfo } from "../../../data";
 import { useGetDataTables } from "../hooks/useGetDataTables";
-import CustomCircularProgress from "../app/utils/CustomCircularProgress";
+import CustomCircularProgress from "../utils/CustomCircularProgress";
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import EditIcon from '@mui/icons-material/Edit';
-import Table from "../app/tables-place/Table";
-import CustomDialog from "../app/tables-place/Dialog";
+import Table from "../tables-place/Table";
+import CustomDialog from "../tables-place/Dialog";
 
 export function TablesPlace() {
     const [newName, setNewName] = useState('')

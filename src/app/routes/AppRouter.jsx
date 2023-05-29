@@ -1,6 +1,6 @@
-import { Routes, Route } from "react-router-dom"
-import { Home, TablesPlace } from "../../pages"
-import GoLayout from "../layouts/LayoutManagement"
+import { Routes, Route } from 'react-router-dom';
+import { Home, TablesPlace } from '../pages';
+import GoLayout from '../layouts/LayoutManagement';
 
 function AppRoutes() {
 
