@@ -1,21 +1,65 @@
-import { Google } from '@mui/icons-material';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { AuthLayout } from '../layout/AuthLayout';
+import { useForm } from '../hooks';
+
+const registerFormFields = {
+  registerCompanyName: '',
+  registerEmail: '',
+  registerProvince: '',
+  registerLocation: '',
+  registerStreet: '',
+  registerNumber: '',
+  registerPostalCode: '',
+  registerPassword: '',
+  registerPassword2: '',
+}
+
 
 export const RegisterPage = () => {
+
+  const { 
+    registerCompanyName,
+    registerEmail,
+    registerProvince,
+    registerLocation,
+    registerStreet,
+    registerNumber,
+    registerPostalCode,
+    registerPassword,
+    registerPassword2,
+    onInputChange
+  } = useForm( registerFormFields );
+
+  const registerSubmit = ( event ) => {
+    event.preventDefault();
+    console.log({ 
+      registerCompanyName,
+      registerEmail,
+      registerProvince,
+      registerLocation,
+      registerStreet,
+      registerNumber,
+      registerPostalCode,
+      registerPassword,
+      registerPassword2 });
+  }
+
   return (
     
     <AuthLayout title="Crear Cuenta">
-      <form>
+      <form onSubmit={ registerSubmit }>
           <Grid container>
 
             <Grid item xs={ 12 } sx={{ mt: 2 }}>
-              <TextField 
+              <TextField
                 label="Razon Social"
                 type="name"
                 placeholder='Razon Social'
                 fullWidth
+                name="registerCompanyName"
+                value={ registerCompanyName }
+                onChange={ onInputChange }
               />
             </Grid>
 
@@ -25,6 +69,9 @@ export const RegisterPage = () => {
                 type="email"
                 placeholder='Email de Registro'
                 fullWidth
+                name="registerEmail"
+                value={ registerEmail }
+                onChange={ onInputChange }
               />
             </Grid>
 
@@ -34,6 +81,9 @@ export const RegisterPage = () => {
                 type="text"
                 placeholder='Provincia'
                 fullWidth
+                name="registerProvince"
+                value={ registerProvince }
+                onChange={ onInputChange }
               />
             </Grid>
 
@@ -43,6 +93,9 @@ export const RegisterPage = () => {
                 type="text"
                 placeholder='Locacion'
                 fullWidth
+                name="registerLocation"
+                value={ registerLocation }
+                onChange={ onInputChange }
               />
             </Grid>
 
@@ -52,6 +105,9 @@ export const RegisterPage = () => {
                 type="text"
                 placeholder='Calle'
                 fullWidth
+                name="registerStreet"
+                value={ registerStreet }
+                onChange={ onInputChange }
               />
             </Grid>
 
@@ -61,6 +117,9 @@ export const RegisterPage = () => {
                 type="number"
                 placeholder='Numeracion'
                 fullWidth
+                name="registerNumber"
+                value={ registerNumber }
+                onChange={ onInputChange }
               />
             </Grid>
 
@@ -70,6 +129,9 @@ export const RegisterPage = () => {
                 type="number"
                 placeholder='Codigo Postal'
                 fullWidth
+                name="registerPostalCode"
+                value={ registerPostalCode }
+                onChange={ onInputChange }
               />
             </Grid>
 
@@ -79,6 +141,9 @@ export const RegisterPage = () => {
                 type="password"
                 placeholder='Contraseña'
                 fullWidth
+                name="registerPassword"
+                value={ registerPassword }
+                onChange={ onInputChange }
               />
             </Grid>
 
@@ -88,6 +153,9 @@ export const RegisterPage = () => {
                 type="password"
                 placeholder='Repetir Contraseña'
                 fullWidth
+                name="registerPassword2"
+                value={ registerPassword2 }
+                onChange={ onInputChange }
               />
             </Grid>
 
