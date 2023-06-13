@@ -1,6 +1,7 @@
 // Realizar cualquier interaccion con la parte de Auth en el store (redux)
 import { useDispatch, useSelector } from 'react-redux';
 import { authApi } from '../../api';
+import { onChecking, onLogin, onLogout, clearErrorMessage } from '../../store';
  
 
 
@@ -11,19 +12,27 @@ export const useAuthStore = () => {
 
     //proceso de Login
     const startLogin = async({ email, password }) => {
-        console.log({email,password})
+        
+        dispatch( onChecking() );
 
         try {
             
-            const resp = await authApi.post('Authentication/Login', {
+            const { data } = await authApi.post('Authentication/Login', {
                 "userName": email, 
-                 "userPassword": password, 
+                "userPassword": password, 
                 "userLanguage": 0 
-                });
-            console.log({resp})
+            });
+            
+            localStorage.setItem( 'token', data.tokenGoingOut );
+            localStorage.setItem( 'token-init-date', new Date().getTime() );
+            dispatch( onLogin({ id: data.id }) );
+
 
         } catch (error) {
-            console.log({error})
+            dispatch( onLogout('Credenciales incorrectas') );
+            setTimeout(() => {
+                dispatch( clearErrorMessage() );
+            }, 10);
         }
     }
 
