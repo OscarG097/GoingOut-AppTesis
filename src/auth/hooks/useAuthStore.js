@@ -15,7 +15,11 @@ export const useAuthStore = () => {
 
         try {
             
-            const resp = await authApi.post('Authentication/Login', { email, password })
+            const resp = await authApi.post('Authentication/Login', {
+                "userName": email, 
+                 "userPassword": password, 
+                "userLanguage": 0 
+                });
             console.log({resp})
 
         } catch (error) {
