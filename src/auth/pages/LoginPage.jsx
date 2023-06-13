@@ -1,18 +1,22 @@
+import { useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+
 import { Google } from '@mui/icons-material';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+
 import { AuthLayout } from '../layout/AuthLayout';
 import { useAuthStore, useForm } from '../hooks';
+import Swal from 'sweetalert2';
+
 
 const loginFormFields = {
   loginEmail: '',
   loginPassword: '',
 }
 
-
 export const LoginPage = () => {
 
-  const { startLogin } = useAuthStore();
+  const { startLogin, errorMessage } = useAuthStore();
 
   const { loginEmail, loginPassword, onInputChange } = useForm( loginFormFields );
 
@@ -20,6 +24,13 @@ export const LoginPage = () => {
     event.preventDefault();
     startLogin({ email: loginEmail, password: loginPassword });
   }
+
+  useEffect(() => {
+    if ( errorMessage !== undefined ) {
+      Swal.fire('Error en la autenticación', errorMessage, 'error');
+    }
+  }, [errorMessage])
+  
 
   const onGoogleSignIn = () => {
     console.log('onGoogleSignIn');
