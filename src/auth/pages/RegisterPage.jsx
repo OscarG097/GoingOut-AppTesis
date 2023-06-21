@@ -1,10 +1,12 @@
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { AuthLayout } from '../layout/AuthLayout';
-import { useForm } from '../hooks';
+import { useForm, useAuthStore } from '../hooks';
+import Swal from 'sweetalert2';
 
 const registerFormFields = {
   registerCompanyName: '',
+  registerCUIT: '',
   registerEmail: '',
   registerProvince: '',
   registerLocation: '',
@@ -18,8 +20,11 @@ const registerFormFields = {
 
 export const RegisterPage = () => {
 
+  const { startRegister } = useAuthStore();
+
   const { 
     registerCompanyName,
+    registerCUIT,
     registerEmail,
     registerProvince,
     registerLocation,
@@ -32,17 +37,24 @@ export const RegisterPage = () => {
   } = useForm( registerFormFields );
 
   const registerSubmit = ( event ) => {
+
     event.preventDefault();
-    console.log({ 
-      registerCompanyName,
-      registerEmail,
-      registerProvince,
-      registerLocation,
-      registerStreet,
-      registerNumber,
-      registerPostalCode,
-      registerPassword,
-      registerPassword2 });
+
+    if ( registerPassword !== registerPassword2 ) {
+      Swal.fire('Error en registro', 'Contraseñas no son iguales', 'error');
+      return;
+    }
+
+    startRegister({ 
+      businessName: registerCompanyName,
+      cuit: registerCUIT,
+      email: registerEmail,
+      province: registerProvince,
+      location: registerLocation,
+      street: registerStreet,
+      numeration: registerNumber,
+      pc: registerPostalCode,
+      password: registerPassword });
   }
 
   return (
@@ -59,6 +71,18 @@ export const RegisterPage = () => {
                 fullWidth
                 name="registerCompanyName"
                 value={ registerCompanyName }
+                onChange={ onInputChange }
+              />
+            </Grid>
+
+            <Grid item xs={ 12 } sx={{ mt: 2 }}>
+              <TextField 
+                label="CUIT"
+                type="number"
+                placeholder='CUIT'
+                fullWidth
+                name="registerCUIT"
+                value={ registerCUIT }
                 onChange={ onInputChange }
               />
             </Grid>
