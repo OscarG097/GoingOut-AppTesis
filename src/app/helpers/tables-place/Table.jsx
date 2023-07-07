@@ -56,9 +56,9 @@ const Table = (props) => {
                 display={'flex'}
                 padding={2}
                 sx={{
-                    position: 'relative',
-                    top: `${x}px`,
-                    left: `${y}px`,
+                    position: 'absolute',
+                    top: `${x}%`,
+                    left: `${y}%`,
                     width: 70,
                     height: 50,
                     backgroundColor: available === null ? `${'success.main'}` : (available ? `${'success.main'}` : `${'error.main'}`),

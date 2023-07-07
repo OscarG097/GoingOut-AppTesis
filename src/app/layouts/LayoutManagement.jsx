@@ -145,29 +145,25 @@ function GoLayout() {
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItemButton onClick={open ? handleClickMenu : null}>
-                        <ListItemIcon
+                    <ListItem disablePadding sx={{ display: 'block' }} component={Link} to={'menu'}>
+                        <ListItemButton
+                            className={classes.sidebarListItemButton}
                             sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
+                                justifyContent: open ? 'initial' : 'center',
                             }}
                         >
-                            <RestaurantMenuIcon className={classes.sidebarIcon} />
-                        </ListItemIcon>
-                        <ListItemText primary='Menú' className={classes.sidebarListItemText} sx={{ opacity: open ? 1 : 0 }} ></ListItemText>
-                        {(open && openMenu) ? <ExpandLessIcon /> : <ExpandMoreIcon sx={{ opacity: open ? 1 : 0 }} />}
-                    </ListItemButton>
-
-                    <Collapse in={open ? openMenu : false} timeout='auto'>
-                        <List component='div' disablePadding >
-                            {listMenuOptions.map(({ id, label, path }) => (
-                                <ListItemButton sx={{ pl: 4 }} key={id} component={Link} to={path} >
-                                    <ListItemText secondary={label} />
-                                </ListItemButton>
-                            ))}
-                        </List>
-                    </Collapse>
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <RestaurantMenuIcon className={classes.sidebarIcon} />
+                            </ListItemIcon>
+                            <ListItemText className={classes.sidebarListItemText} primary='Menú' sx={{ opacity: open ? 1 : 0 }} />
+                        </ListItemButton>
+                    </ListItem>
 
                     <ListItem disablePadding sx={{ display: 'block' }} component={Link} to={'camareros'}>
                         <ListItemButton

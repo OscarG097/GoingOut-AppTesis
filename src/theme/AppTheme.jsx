@@ -1,16 +1,16 @@
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
-import { orangeTheme } from './';
+import { theme } from './';
 
 
 export const AppTheme = ({ children }) => {
   return (
-    <ThemeProvider theme={ orangeTheme }>
+    <ThemeProvider theme={theme}>
 
-        <CssBaseline />
+      <CssBaseline />
 
-        { children }
-        
+      {children}
+
     </ThemeProvider>
   )
 }

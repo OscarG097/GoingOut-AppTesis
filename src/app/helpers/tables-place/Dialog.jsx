@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
     Button,
     Dialog,
@@ -7,7 +8,6 @@ import {
     DialogTitle,
     TextField
 } from '@mui/material';
-import { PropTypes } from 'prop-types';
 
 function CustomDialog(props) {
     const { open, close, save, newName } = props
@@ -27,8 +27,8 @@ function CustomDialog(props) {
                     label='Nombre'
                     type='text'
                     variant='standard'
-                    onChange={(e) => newName(e.target.value)}>
-                </TextField>
+                    onChange={(e) => newName(e.target.value)}
+                />
             </DialogContent>
             <DialogActions>
                 <Button onClick={close}>Cancelar</Button>
@@ -39,10 +39,3 @@ function CustomDialog(props) {
 }
 
 export default CustomDialog
-
-CustomDialog.propTypes = {
-    open: PropTypes.any,
-    close: PropTypes.any,
-    save: PropTypes.any,
-    newName: PropTypes.any
-}

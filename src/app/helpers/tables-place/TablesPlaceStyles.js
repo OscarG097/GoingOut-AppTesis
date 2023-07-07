@@ -5,6 +5,7 @@ const TablesPlaceStyles = makeStyles({
         border: '1px solid #F3734D',
         color: '#F3734D',
         '&:hover': {
+            color: '#ffff',
             backgroundColor: '#F3734D',
             boxShadow: '.1em .1em .1em .1em #CFD3D5'
         }
