@@ -1,15 +1,13 @@
 import axios from 'axios';
-import { getEnvVariables } from '../auth/helpers';
-
-const { VITE_API_BASE } = getEnvVariables();
+import { settings } from '../config/settings'
 
 const authApi = axios.create({
-    baseURL: VITE_API_BASE
+    baseURL: settings.apiBaseUrl
 });
 
 // Configuracion de interceptores de axios
 // añadir o modificar info. antes de la peticion
-authApi.interceptors.request.use( config => {
+authApi.interceptors.request.use(config => {
 
     config.headers = {
         'SecretKey': 'df7baef36b029e0450133eea8aefb3deb2fd759ebfa1f810c12734e0b158841b',
@@ -17,7 +15,7 @@ authApi.interceptors.request.use( config => {
     }
 
     return config;
-} );
+});
 
 
 

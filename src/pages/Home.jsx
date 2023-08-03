@@ -1,48 +1,42 @@
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import { settings } from '../config/settings'
 import { Badge, Box, CircularProgress, Grid } from "@mui/material";
 import { PieChart, Pie } from "recharts";
-import { HomeCardStyles } from '../app/utils/styles'
-import { HomeCard, CalendarCard } from '../app/utils';
+import { HomeCardStyles } from '../utils/styles';
+import { HomeCard, CalendarCard } from '../utils';
 import { dataTables } from '../../data';
-import { useGetDataTables } from '../hooks/useGetDataTables';
 
 function Home() {
     const count = 0
     const classes = HomeCardStyles()
-    const { tables, loading } = useGetDataTables(dataTables)
 
 
     const options = [
         {
             id: 0,
             label: 'Ocupación de mesas',
-            path: import.meta.env.VITE_ROUTES_TABLES,
+            path: settings.routeTables,
             body:
-                (loading ?
-                    <Box sx={{ display: 'flex' }}>
-                        <CircularProgress />
-                    </Box>
-                    :
-                    <Box sx={{ marginLeft: '130px', marginBottom: '16em' }}>
-                        <PieChart width={800} height={400}>
-                            <Pie
-                                data={tables}
-                                cx={120}
-                                cy={120}
-                                innerRadius={60}
-                                outerRadius={80}
-                                paddingAngle={8}
-                                dataKey={'value'}
-                            />
-                        </PieChart>
-                    </Box>)
+                <Box sx={{ marginLeft: '130px', marginBottom: '16em' }}>
+                    <PieChart width={800} height={400}>
+                        <Pie
+                            data={dataTables}
+                            cx={120}
+                            cy={120}
+                            innerRadius={60}
+                            outerRadius={80}
+                            paddingAngle={8}
+                            dataKey={'value'}
+                        />
+                    </PieChart>
+                </Box>
         },
         {
             id: 1,
             label: 'Pedidos en mesa',
-            path: import.meta.env.VITE_ROUTES_ORDERS,
+            path: settings.routeOrders,
             body:
                 <Badge>
                     {count === 0 ? <NotificationsIcon sx={{ fontSize: '15em' }} /> : <NotificationsActiveIcon sx={{ fontSize: '15em' }} />}
@@ -59,7 +53,7 @@ function Home() {
         {
             id: 3,
             label: 'Facturaciones',
-            path: import.meta.env.VITE_ROUTES_BILLINGS,
+            path: settings.routeBillings,
             body: <ReceiptLongIcon sx={{ fontSize: '15em' }} />
         },
     ]
