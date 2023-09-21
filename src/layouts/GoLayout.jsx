@@ -5,6 +5,7 @@ import { Box, Divider, IconButton, List, Toolbar, useTheme } from "@mui/material
 import { CalendarMonth, ChevronLeft, ChevronRight, Home, Menu, Notifications, PeopleAlt, RestaurantMenu, Settings } from '../utils/icons'
 import { CollapseOptionSidebar, LogoutOption, OptionSidebar } from "../components/ListItem";
 import { AppBar, Drawer, DrawerHeader } from "../utils";
+import { settings } from "../config/settings";
 import GOING_OUT_LOGO from "./../images/GoingOutNavbarLogo.png";
 import { useLogout } from "../hooks";
 import { listMenuOptions, listReservationOptions } from "./../../data";
@@ -63,7 +64,7 @@ export const GoLayout = () => {
 
                 <List>
                     <OptionSidebar
-                        path={'/management'}
+                        path={settings.routeGomain}
                         label={'Inicio'}
                         openSidebar={openSidebar}
                     >
@@ -71,7 +72,7 @@ export const GoLayout = () => {
                     </OptionSidebar>
 
                     <OptionSidebar
-                        path={'/pedidos'}
+                        path={settings.routeOrders}
                         label={'Pedidos en mesa'}
                         openSidebar={openSidebar}
                     >
@@ -89,7 +90,7 @@ export const GoLayout = () => {
                     </CollapseOptionSidebar>
 
                     <OptionSidebar
-                        path={'/camareros'}
+                        path={settings.routeWaiters}
                         label={'Camareros'}
                         openSidebar={openSidebar}
                     >
@@ -115,7 +116,7 @@ export const GoLayout = () => {
 
                 {openSidebar &&
                     <OptionSidebar
-                        path={'/'}
+                        path={'/management'}
                         label={'Configuración'}
                         openSidebar={openSidebar}
                     >

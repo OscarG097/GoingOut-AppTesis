@@ -1,13 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import instance from "../constants";
 import { settings } from '../config/settings';
-import { clearErrorMessage, onChecking, onLogin, onLogout } from "../store/auth/authSlice";
+import authStore from "../store/authStore";
 
 export const useRegister = () => {
-    const { status, user, errorMessage } = useSelector(state => state.auth);
-    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { setAuthUser, status, error } = authStore();
 
     const setNewClient = async ({
         businessName,
@@ -20,8 +18,6 @@ export const useRegister = () => {
         numeration,
         pc
     }) => {
-        dispatch(onChecking())
-
         try {
             const { data } = await instance.post(`${settings.createCLientUrl}`, {
                 "businessName": businessName,
@@ -36,20 +32,16 @@ export const useRegister = () => {
             });
             localStorage.setItem('token', data.tokenGoingOut);
             localStorage.setItem('token-init-date', new Date().getTime());
-            dispatch(onLogin({ id: data.id }));
+            setAuthUser({ status: true, error: false })
             navigate(`${settings.routeGomain}`)
         } catch (e) {
-            dispatch(onLogout(e.response.data?.msg || '--'));
-            setTimeout(() => {
-                dispatch(clearErrorMessage());
-            }, 10);
+            setAuthUser({ status: false, error: true })
         }
-
     }
+
     return {
         status,
-        user,
-        errorMessage,
+        error,
         setNewClient,
     }
 }

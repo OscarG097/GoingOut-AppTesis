@@ -1,14 +1,12 @@
 
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { settings } from '../config/settings';
-import { onLogout } from "../store/auth/authSlice";
 import instance from "../constants";
+import authStore from "../store/authStore";
 
 export const useLogout = () => {
-    const { status, user, errorMessage } = useSelector(state => state.auth);
+    const { status, error, setAuthUser } = authStore();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const doLogout = async () => {
         try {
@@ -16,9 +14,10 @@ export const useLogout = () => {
                 "userId": `${localStorage.getItem('id')}`
             })
             localStorage.removeItem('token')
-            dispatch(onLogout({ status: 'not-authenticated' }));
+            setAuthUser({ status: false, error: false })
             navigate(`/`)
         } catch (e) {
+            setAuthUser({ status: true, error: true })
             console.error(e)
         }
     }
@@ -26,7 +25,6 @@ export const useLogout = () => {
     return {
         doLogout,
         status,
-        user,
-        errorMessage
+        error
     }
 }

@@ -1,38 +1,34 @@
 
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { settings } from '../config/settings';
 import axiosInstance from "../constants";
-import { clearErrorMessage, onChecking, onLogin, onLogout } from "../store/auth/authSlice";
+import authStore from "../store/authStore";
 
 export const useLogin = () => {
-    const { status, user, errorMessage } = useSelector(state => state.auth);
-    const dispatch = useDispatch();
+    const { setAuthUser } = authStore();
     const navigate = useNavigate();
 
     const doLogin = async ({ email, password }) => {
-        dispatch(onChecking())
         try {
             const { data } = await axiosInstance.post(`${settings.authUrl}`, {
                 "userName": email,
                 "userPassword": password
             })
+            console.log(data)
             localStorage.setItem('token', data.tokenGoingOut);
             localStorage.setItem('id', data.id);
-            dispatch(onLogin({ status: 'authenticated' }));
+            setAuthUser({ status: true, error: false, rol: data.rol })
+            // console.log(authStore.getState().status)
+            // console.log(authStore.getState().error)
             navigate(`${settings.routeGomain}`)
         } catch (e) {
-            dispatch(onLogout('Credenciales incorrectas'));
-            setTimeout(() => {
-                dispatch(clearErrorMessage());
-            }, 10);
+            setAuthUser({ status: false, error: true })
         }
     }
 
     return {
         doLogin,
-        status,
-        user,
-        errorMessage
+        // status,
+        // error
     }
 }

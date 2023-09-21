@@ -8,6 +8,7 @@ export const settings = {
     routeGomain: import.meta.env.VITE_ROUTES_GOMAIN,
     routeOrders: import.meta.env.VITE_ROUTES_ORDERS,
     routeMenu: import.meta.env.VITE_ROUTES_MENU,
+    routeWaiters: import.meta.env.VITE_ROUTES_WAITERS,
     routeTables: import.meta.env.VITE_ROUTES_TABLES,
     routeBookings: import.meta.env.VITE_ROUTES_BOOKINGS,
     routeBillings: import.meta.env.VITE_ROUTES_BILLINGS,

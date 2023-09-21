@@ -6,6 +6,14 @@ export const useOpen = () => {
     const [openReservation, setOpenReservation] = useState(false)
 
     const handleOpenSidebar = () => {
+        if (openMenu) {
+            setOpenMenu(false)
+        }
+
+        if (openReservation) {
+            setOpenReservation(false)
+        }
+
         setOpenSidiebar(!openSidebar)
     }
 

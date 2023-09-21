@@ -13,7 +13,6 @@ const loginFormFields = {
 export const LoginPage = () => {
 
   const { doLogin } = useLogin();
-
   const { loginEmail, loginPassword, onInputChange } = useForm(loginFormFields);
 
   const loginSubmit = (event) => {
