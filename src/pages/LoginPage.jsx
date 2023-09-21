@@ -2,7 +2,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Google } from '@mui/icons-material';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { AuthLayout } from '../layouts';
-import { useForm, useAuthStore } from '../hooks';
+import { useForm, useLogin } from '../hooks';
 
 const loginFormFields = {
   loginEmail: '',
@@ -12,13 +12,13 @@ const loginFormFields = {
 
 export const LoginPage = () => {
 
-  const { startLogin } = useAuthStore();
+  const { doLogin } = useLogin();
 
   const { loginEmail, loginPassword, onInputChange } = useForm(loginFormFields);
 
   const loginSubmit = (event) => {
     event.preventDefault();
-    startLogin({ email: loginEmail, password: loginPassword });
+    doLogin({ email: loginEmail, password: loginPassword });
   }
 
   const onGoogleSignIn = () => {
@@ -35,7 +35,7 @@ export const LoginPage = () => {
             <TextField
               label="Email"
               type="email"
-              placeholder='corre@correo.com'
+              placeholder='correo@ejemplo.com'
               fullWidth
               name="loginEmail"
               value={loginEmail}
@@ -59,7 +59,7 @@ export const LoginPage = () => {
 
             <Grid item xs={12} sm={6}>
               <Button type="submit" variant='contained' fullWidth>
-                Login
+                Ingresar
               </Button>
             </Grid>
 

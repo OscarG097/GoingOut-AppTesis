@@ -49,8 +49,3 @@ export const listReservationOptions = [
     { id: 0, label: 'Programar reserva', path: 'programar-reserva' },
     { id: 1, label: 'Eliminar reserva', path: 'eliminar-reserva' },
 ]
-
-export const listBillingsOptions = [
-    { id: 0, label: 'Ver Información', path: 'facturaciones' },
-    { id: 1, label: 'Programar Solicitud', path: 'programar-solicitud-facturacion' },
-]

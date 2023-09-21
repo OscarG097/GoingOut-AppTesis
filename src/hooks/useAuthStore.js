@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import authApi from '../api/authApi';
+import authApi from '../api/apiConfig';
 import { settings } from '../config/settings'
 import { onChecking, onLogin, onLogout, clearErrorMessage } from '../store/auth/authSlice';
 
@@ -23,7 +23,6 @@ export const useAuthStore = () => {
                 "userPassword": password,
                 "userLanguage": 0
             });
-            console.log({ data })
             localStorage.setItem('token', data.tokenGoingOut);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(onLogin({ id: data.id }));

@@ -1,7 +1,7 @@
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { AuthLayout } from '../layouts/AuthLayout';
-import { useForm } from '../hooks';
+import { useForm, useRegister } from '../hooks';
 
 const registerFormFields = {
   registerCompanyName: '',
@@ -28,22 +28,25 @@ export const RegisterPage = () => {
     registerPostalCode,
     registerPassword,
     registerPasswordConfirm,
+    cuitCompany,
     onInputChange
   } = useForm(registerFormFields);
 
+  const { setNewClient } = useRegister()
+
   const registerSubmit = (event) => {
     event.preventDefault();
-    console.log({
-      registerCompanyName,
-      registerEmail,
-      registerProvince,
-      registerLocation,
-      registerStreet,
-      registerNumber,
-      registerPostalCode,
-      registerPassword,
-      registerPasswordConfirm
-    });
+    setNewClient({
+      businessName: registerCompanyName,
+      email: registerEmail,
+      province: registerProvince,
+      location: registerLocation,
+      street: registerStreet,
+      numeration: parseInt(registerNumber),
+      pc: parseInt(registerPostalCode),
+      password: registerPassword,
+      cuit: cuitCompany
+    })
   }
 
   return (
@@ -60,6 +63,18 @@ export const RegisterPage = () => {
               fullWidth
               name="registerCompanyName"
               value={registerCompanyName}
+              onChange={onInputChange}
+            />
+          </Grid>
+
+          <Grid item xs={12} sx={{ mt: 2 }}>
+            <TextField
+              label="CUIT"
+              type="number"
+              placeholder='CUIT'
+              fullWidth
+              name="cuitCompany"
+              value={cuitCompany}
               onChange={onInputChange}
             />
           </Grid>
@@ -163,7 +178,7 @@ export const RegisterPage = () => {
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }} >
 
             <Grid item xs={12}>
-              <Button variant='contained' fullWidth>
+              <Button variant='contained' fullWidth onClick={(e) => registerSubmit(e)}>
                 Crear Cuenta
               </Button>
             </Grid>
@@ -171,8 +186,8 @@ export const RegisterPage = () => {
           </Grid>
 
           <Grid container direction='row' justifyContent='end'>
-            <Typography sx={{ mr: 1 }}>¿Ya tienes una cuenta?</Typography>
-            <Link component={RouterLink} color='inherit' to='/register'>
+            <Typography sx={{ mr: 1 }}>¿Ya tenés una cuenta?</Typography>
+            <Link component={RouterLink} color='inherit' to='/'>
               Ingresar
             </Link>
           </Grid>

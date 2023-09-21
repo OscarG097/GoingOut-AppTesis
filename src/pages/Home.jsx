@@ -2,7 +2,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { settings } from '../config/settings'
-import { Badge, Box, CircularProgress, Grid } from "@mui/material";
+import { Badge, Box, Grid } from "@mui/material";
 import { PieChart, Pie } from "recharts";
 import { HomeCardStyles } from '../utils/styles';
 import { HomeCard, CalendarCard } from '../utils';
